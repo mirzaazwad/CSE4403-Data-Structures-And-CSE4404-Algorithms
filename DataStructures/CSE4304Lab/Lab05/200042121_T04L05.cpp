@@ -19,12 +19,12 @@ int main(void){
     for(int i=0;i<n;i++){
         int x,y;
         cin>>x>>y;
-        p.push({x,false});
-        p.push({y,true});
+        p.push({x,true});
+        p.push({y,false});
     }
     int curr_room=0,max_room=0;
     while(!p.empty()){
-        if(!p.top().second)curr_room++;
+        if(p.top().second)curr_room++;
         else curr_room--;
         max_room=max(max_room,curr_room);
         p.pop();

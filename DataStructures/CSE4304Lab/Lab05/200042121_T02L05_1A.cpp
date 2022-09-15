@@ -1,129 +1,176 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
+int N;
 
-
-
- 
-
-    void swap(int* a,int* b){
-        int temp=*a;
-        *a=*b;
-        *b=temp;
-    }
-
-    void swap(int a,int b){
-        int temp=a;
-        a=b;
-        b=temp;
-    }
-
-
-    int heap[10000006];
-    int n;
-
-
-    void heapify(int heap[], int siz, int i)
-    {
-        int smallest = i; 
-        int left = 2 * i + 1; 
-        int right = 2 * i + 2; 
-    
-        if (left < siz && heap[left] < heap[smallest])smallest = left;
-    
-        if (right < siz && heap[right] < heap[smallest])smallest = right;
-
-        if (smallest != i) {
-            swap(&heap[i], &heap[smallest]);
-            heapify(heap, siz, smallest);
+namespace nonstd{
+    template<typename T>class DynamicArray{
+        private:
+        int capacity;
+        T* array;
+        void resize(){
+            capacity<<=1;
+            T *temp=new T[capacity];
+            for(int i=0;i<size;i++)temp[i] = array[i];
+            delete[] array;
+            array=temp;
         }
-    }
-
-    void Build_min_heap(int heap[], int siz)
-    {
-        n=siz-1;
-        int start = (siz / 2) - 1;
-        for (int i = start; i >= 0; i--) {
-            heapify(heap, siz, i);
+        public:
+        int size;
+        DynamicArray(int n=0){
+            size=n;
+            capacity=2;
+            while(capacity<size){
+                capacity<<=1;
+            }
+            array=new T[capacity];
         }
+
+        T Get(int i){
+            if(i<0 || i>=size){
+                throw("DynamicArray index out of range");
+            }
+            return array[i];
+        }
+
+        void Set(int i,T value){
+            if(i<0 || i>=size){
+                throw("DynamicArray index out of range");
+            }
+            array[i]=value;
+        }
+
+        void Push_Back(T value){
+            if(size<capacity){
+                array[size]=value;
+                size++;
+            }
+            else{
+                resize();
+                array[size]=value;
+                size++;
+            }
+        }
+
+        int Size(){
+            return size;
+        }
+        
+        int Capacity(){
+            return capacity;
+        }
+
+        void Remove(int i){
+            int j;
+            for(j=i;j<size-1;j++){
+                swap(array[j],array[j+1]);
+            }
+            array[j]=0;
+            size--;
+        }
+        
+
+    };
+}
+
+
+void heapify(int i,int* heap,int N){
+    int smallest=i;
+    int first=2*i;
+    int second=2*i+1;
+    if(first<=N && heap[first]<heap[smallest]){
+        smallest=first;
+    }
+    if(second<=N && heap[second]<heap[smallest]){
+        smallest=second;
     }
 
-    void insertNode(int heap[], int& n, int Key)
-    {
-        n = n + 1;
-        heap[n - 1] = Key;
-        heapify(heap, n, n - 1);
+    if(smallest!=i){
+        swap(heap[i],heap[smallest]);
+        heapify(smallest,heap,N);
     }
+}
 
-    void Min_heap_insert(int value, int heap[]){
-        insertNode(heap,n,value);
+void Build_min_heap(int *heap,int N){
+    for(int i=N;i>0;i--){
+        heapify(i,heap,N);
     }
-    
-    
+}
 
+int Heap_Minimim(int heap[]){
+    return heap[1];
+}
 
+int Heap_extract_min(int heap[]){
+    int temp=heap[1];
+    swap(heap[1],heap[N]);
+    N--;
+    Build_min_heap(heap,N);
+    return temp;
+}
 
-
-
-    void deleteRoot(int heap[], int& n)
-    {
-        swap(heap[0],heap[n-1]);
-        n = n - 1;
-        heapify(heap, n, 0);
+void Min_heap_insert(int value, int heap[]){
+    int temp[(N+1)+1];
+    for(int i=1;i<=N;i++){
+        temp[i]=heap[i];
     }
+    delete[] heap;
+    heap=new int[(N+1)+1];
+    for(int i=1;i<=N;i++)heap[i]=temp[i];
+    heap[N+1]=value;
+    N++;
+    Build_min_heap(heap,N);
+}
 
-    int Heap_Minimum(int heap[]){
-        return heap[0];
-    }
+void Min_Priority_Queue(int heap[],int id,int value=-1){
+        switch(id){
+            case 1:
+            cout<<Heap_Minimim(heap)<<endl;
+            for(int i=1;i<=N;i++)cout<<heap[i]<<" ";
+            cout<<endl;
+            break;
+            case 2:
+            cout<<Heap_extract_min(heap)<<endl;
+            for(int i=1;i<=N;i++)cout<<heap[i]<<" ";
+            cout<<endl;
+            break;
+            case 3:
+            if(value==-1)return;
+            Min_heap_insert(value,heap);
+            for(int i=1;i<=N;i++)cout<<heap[i]<<" ";
+            cout<<endl;
+            break;
+            default:
+            return;
+        }
+}
 
-    int Heap_Extract_Min(int heap[]){
-        int temp=heap[0];
-        deleteRoot(heap,n);
-        return temp;
-    }
-
- 
 
 
 
 int main(void){
-    n=0;
-    int i=0;
-    int m;
-    while(cin>>m,m!=-1){
-        heap[i]=m;
-        i++;
+    nonstd::DynamicArray<int>arr;
+    int n;
+    while(cin>>n,n!=-1){
+        arr.Push_Back(n);
     }
-    Build_min_heap(heap,i);
-    for(int i=0;i<=n;i++){
-        cout<<heap[i]<<" ";
+
+    N=arr.Size();
+    int* heap=new int[N+1];
+    for(int i=0;i<N;i++){
+        heap[i+1]=arr.Get(i);
     }
+    Build_min_heap(heap,N);
+    cout<<"Min heap:";
+    for(int i=1;i<=N;i++)cout<<heap[i]<<" ";
     cout<<endl;
-    Heap_Extract_Min(heap);
-    int x;
-    while(cin>>x,x!=0){
-        switch(x){
-            case 1:
-            cout<<Heap_Minimum(heap)<<endl;
-            for(int i=0;i<=n;i++)cout<<heap[i]<<" ";
-            cout<<endl;
-            break;
-            case 2:
-            cout<<Heap_Extract_Min(heap)<<endl;
-            for(int i=0;i<=n;i++)cout<<heap[i]<<" ";
-            cout<<endl;
-            break;
-            case 3:
-            int y;
-            cin>>y;
-            Min_heap_insert(y,heap);
-            for(int i=0;i<=n;i++)cout<<heap[i]<<" ";
-            cout<<endl;
-            break;
+    while(!(cin>>n).eof()){
 
+        if(n!=3)Min_Priority_Queue(heap,n);
+        else {
+            int value;
+            cin>>value;
+            Min_Priority_Queue(heap,n,value);
         }
-        cin>>x;
+
     }
-
-
-    return 0;
 }
