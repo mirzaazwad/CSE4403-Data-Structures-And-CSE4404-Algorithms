@@ -195,9 +195,7 @@ int main(void){
     BST.InsertSirsMethod(50);
     BST.Inorder();
     cout<<endl;
-    if(BST.Delete(40)==nullptr){
-        cout<<"Not in List, atleast not anymore"<<endl;
-    }
+    BST.Delete(40)==nullptr;
     BST.Inorder();
     cout<<endl;
     if(BST.Search(30)==nullptr){
