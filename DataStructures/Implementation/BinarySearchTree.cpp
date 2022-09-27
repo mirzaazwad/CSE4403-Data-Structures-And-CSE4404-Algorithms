@@ -74,7 +74,7 @@ namespace nonstd{
 			else temp->right=insertNode;
 		}
 
-        Node<T>* Search(int key,Node<T>* t=nullptr,bool set=false){
+        Node<T>* Search(T key,Node<T>* t=nullptr,bool set=false){
             if(!set){
                 set=true;
                 t=root;
@@ -185,20 +185,20 @@ namespace nonstd{
 }
 
 int main(void){
-    nonstd::BinarySearchTree<int> BST=nonstd::BinarySearchTree<int>();
-    BST.InsertSirsMethod(30);
-    BST.InsertSirsMethod(20);
-    BST.InsertSirsMethod(40);
-    BST.InsertSirsMethod(10);
-    BST.InsertSirsMethod(25);
-    BST.InsertSirsMethod(35);
-    BST.InsertSirsMethod(50);
+    nonstd::BinarySearchTree<string> BST=nonstd::BinarySearchTree<string>();
+    BST.InsertSirsMethod("30");
+    BST.InsertSirsMethod("20");
+    BST.InsertSirsMethod("40");
+    BST.InsertSirsMethod("10");
+    BST.InsertSirsMethod("25");
+    BST.InsertSirsMethod("35");
+    BST.InsertSirsMethod("50");
     BST.Inorder();
     cout<<endl;
-    BST.Delete(40)==nullptr;
+    BST.Delete("40")==nullptr;
     BST.Inorder();
     cout<<endl;
-    if(BST.Search(30)==nullptr){
+    if(BST.Search("30")==nullptr){
         cout<<"Not Found"<<endl;
     }
     else cout<<"Found"<<endl;
