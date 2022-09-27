@@ -85,20 +85,29 @@ namespace nonstd{
             else return Search(key,t->right,true);
         }
 
-        void inorder_walk(Node<T>* t=nullptr,bool set=false){
-			if(!set){
-				set=true;
-				t=root;
-			}
-			if(t!=nullptr){
-				inorder_walk(t->left,set);
-				cout<<t->data<<" ";
-				inorder_walk(t->right,set);
-			}
-			else{
+        void Inorder(Node<T>* t=nullptr,bool set=false){
+            if(t==nullptr){
+                if(!set){
+                    t=root;
+                    set=true;
+                    Inorder(t,set);
+                }
                 return;
             }
+			Inorder(t->left,set);
+			cout<<t->data<<" ";
+			Inorder(t->right,set);
 		}
+
+        /*DEBUG CODE START*/
+        // T getRootValue(){
+        //     return root->data;
+        // }
+
+        // Node<T>* getRoot(){
+        //     return root;
+        // }
+        /*DEBUG CODE END*/
 
         Node<T>* Delete(T key,Node<T>* t=nullptr,bool set=false){
             Node<T>* temp;
@@ -114,6 +123,7 @@ namespace nonstd{
                     root=nullptr;
                 }
                 delete t;
+                return nullptr;
             }
 
             if(key<t->data){
@@ -183,19 +193,17 @@ int main(void){
     BST.InsertSirsMethod(25);
     BST.InsertSirsMethod(35);
     BST.InsertSirsMethod(50);
-    BST.inorder_walk();
+    BST.Inorder();
     cout<<endl;
-    BST.Delete(50);
-    BST.inorder_walk();
+    if(BST.Delete(40)==nullptr){
+        cout<<"Not in List, atleast not anymore"<<endl;
+    }
+    BST.Inorder();
     cout<<endl;
-    nonstd::Node<int>* ptr=BST.Search(50);
-    if(ptr==nullptr){
+    if(BST.Search(30)==nullptr){
         cout<<"Not Found"<<endl;
     }
-    else{
-        cout<<"Found: ";
-        cout<<ptr->data<<endl;
-    }
+    else cout<<"Found"<<endl;
 
 
     return 0;
