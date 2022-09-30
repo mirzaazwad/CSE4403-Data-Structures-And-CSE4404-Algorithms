@@ -21,7 +21,7 @@ Most contagious memory-based data structures are **static data structues** in ot
 
 so say we have the array given below:
 
-![Array Image](https://cdn.programiz.com/sites/tutorial2program/files/c-arrays.jpg](https://media.geeksforgeeks.org/wp-content/uploads/C-Arrays.jpg)
+![Array Image](https://media.geeksforgeeks.org/wp-content/uploads/C-Arrays.jpg)
 
 We cannot insert 35 after 46 which is the last element, which is a drawback of contiguous memory-based data structures that is they have static allocation of memory.
 
