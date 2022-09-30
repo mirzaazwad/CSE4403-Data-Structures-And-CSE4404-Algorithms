@@ -26,7 +26,7 @@ so say we have the array given below:
 We cannot insert 35 after 46 which is the last element, which is a **drawback** of contiguous memory-based data structures that is they have static allocation of memory.
 
 **Advantage of Contiguous Memory** lies in the fact that we can store a lot of elements sequentially making it easier to search and index. The searching can be done on the basis of 
-data type by shifting positions in an indexed manner via pointer, telling it to move exactly the same number of blocks as the size of that data type in each next transition.
+data type by shifting positions in an indexed manner via pointer, telling it to move exactly the same number of blocks as the size of that data type in each next transition. Can give constant access time by the use of indexing.
 
 **Disadvantage of Contiguous Memory** is that we usually can't add new elements or search for a group of elements that aren't having the same data type.
 
