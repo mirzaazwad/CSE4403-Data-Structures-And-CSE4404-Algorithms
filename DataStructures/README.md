@@ -23,9 +23,36 @@ so say we have the array given below:
 
 ![Array Image](https://media.geeksforgeeks.org/wp-content/uploads/C-Arrays.jpg)
 
-We cannot insert 35 after 46 which is the last element, which is a drawback of contiguous memory-based data structures that is they have static allocation of memory.
+We cannot insert 35 after 46 which is the last element, which is a **drawback** of contiguous memory-based data structures that is they have static allocation of memory.
 
-Advantage of Contiguous Memory lies in the fact that we can store a lot of elements sequentially making it easier to search and index. The searching can be done on the basis of 
+**Advantage of Contiguous Memory** lies in the fact that we can store a lot of elements sequentially making it easier to search and index. The searching can be done on the basis of 
 data type by shifting positions in an indexed manner via pointer, telling it to move exactly the same number of blocks as the size of that data type in each next transition.
+
+**Disadvantage of Contiguous Memory** is that we usually can't add new elements or search for a group of elements that aren't having the same data type.
+
+To overcome the Disadvantage of Contiguous Memory we implement something called a **Linked List**.
+
+A Linked List has one major **drawback**, although we can add more elements which is a **plus** but we cannot index a linked list, what ends up happening
+is that the linked list has to be traversed from head to tail and any particular node cannot be accessed directly.
+
+There are 3 types of linked list commonly used:
+
+1) Singly
+2) Doubly
+3) Circular
+
+Circular is by far the least used [Uses Of Circular Linked List](https://www.geeksforgeeks.org/applications-advantages-and-disadvantages-of-circular-linked-list/#:~:text=Circular%20Linked%20Lists%20can%20be,such%20as%20a%20Fibonacci%20Heap.)
+
+
+**Storing Matrices**
+
+Matrices and 2D structures can be stored in row major and column major forms which is essentially a form of indexed storage. But to better understand it,
+its easy to relate it to a linked list storing the pointers to the base address of different array elements. If it stores the base address of the rows of a matrix its row-majored.
+If it stores the base address of the columns of the matrix is column majored
+
+[For a detailed read](https://en.wikipedia.org/wiki/Row-_and_column-major_order)
+
+Such row majors or column majors can be used for graph representation using adjacency matrices.
+
 
 
