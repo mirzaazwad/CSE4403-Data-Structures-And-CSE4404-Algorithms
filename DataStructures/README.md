@@ -54,5 +54,20 @@ If it stores the base address of the columns of the matrix is column majored
 
 Such row majors or column majors can be used for graph representation using adjacency matrices.
 
+**Arrays**
+
+Traversing through the array with constant access time. 
+
+```
+For 1D arrays
+arr[i] = arr[0] + elem_size*(i-0)
+arr[0] here indicates the base address of the array or the array address, i-firstIndex where firstIndex is the starting index of the array
+
+For 2D arrays
+
+Row-Major: arr[i,j] = array_address + elem_size*((i-firstIndex)*row_size+(j-firstIndex))
+
+Column-Major: arr[i,j] = array_address + elem_size*((i-firstIndex)+(j-firstIndex)*column_size)
+```
 
 
