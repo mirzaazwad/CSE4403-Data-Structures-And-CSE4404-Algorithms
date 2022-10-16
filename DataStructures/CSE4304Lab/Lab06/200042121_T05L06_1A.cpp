@@ -127,7 +127,16 @@ int main(void){
     nonstd::BinarySearchTree<int>tree=nonstd::BinarySearchTree<int>();
     int n;
     while(cin>>n,n!=-1){
-        tree.Insert(n);
+        bool found=false;
+        for(int i=-3;i<=3;i++){
+            if(tree.Search(n+i)){
+                found=true;
+                break;
+            }
+        }
+        if(!found){
+            tree.Insert(n);
+        }
     }
 
     int q;
