@@ -25,27 +25,28 @@ using namespace std;
 
 class MedianFinder{
     private:
-    ordered_set mp;
+    multiset<int>ms;
     Int n;
     public:
     MedianFinder(){
         n=0;
-        mp.clear();
+        ms.clear();
     }
 
     void AddNum(Int num){
         n++;
-        mp.insert(num);
+        ms.insert(num);
     }
 
     double FindMedian(){
+        vector<int>vec(ms.begin(),ms.end());
         if((n&1)){
             Int pos=(n>>1)+1;
-            return *(mp.find_by_order(pos-1));
+            return (vec[pos-1]);
         }
         else{
             Int pos=(n>>1);
-            double sum=(*(mp.find_by_order(pos-1))+*(mp.find_by_order(pos)));
+            double sum=((vec[pos-1])+(vec[pos]));
             return sum/2.0f;
         }
     }

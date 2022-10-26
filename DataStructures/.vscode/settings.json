@@ -3,6 +3,7 @@
         "queue": "cpp",
         "xutility": "cpp",
         "iostream": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "new": "cpp"
     }
 }
