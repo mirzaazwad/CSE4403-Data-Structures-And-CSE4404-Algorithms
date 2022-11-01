@@ -1,12 +1,17 @@
+#include<iostream>
+using namespace std;
+
 #include <bits/stdc++.h>
 using namespace std;
+
+  namespace __self
+{
 
     class Node
     {
     public:
         bool terminal; // means endmark
         Node *next[26];
-        Node *parent;
         int prefix_value;
         Node()
         {
@@ -41,7 +46,6 @@ using namespace std;
                 {
                     curr->next[id] = new Node();
                 }
-                curr->next[id]->parent=curr;
                 curr = curr->next[id];
                 curr->prefix_value++;
             }
@@ -63,21 +67,6 @@ using namespace std;
             return curr->terminal;
         }
 
-        Node* CurrentPosition(string word)
-        {
-            Node *curr = root;
-            for (char character : word)
-            {
-                int id = character - 'a';
-                if (curr->next[id] == nullptr)
-                {
-                    return nullptr;
-                }
-                curr = curr->next[id];
-            }
-            return curr;
-        }
-
         bool isEmpty()
         {
             for (int i = 0; i < 26; i++){
@@ -93,12 +82,27 @@ using namespace std;
             return true;
         }
 
+        Node* CurrentPosition(string word)
+        {
+            Node *curr = root;
+            for (char character : word)
+            {
+                int id = character - 'a';
+                if (curr->next[id] == nullptr)
+                {
+                    return nullptr;
+                }
+                curr = curr->next[id];
+            }
+            return curr;
+        }
 
-
-
-        vector<string> suggestions(Node *curr,string word,vector<string>& result){
+        void suggestions(Node *curr,string word,vector<string>& result){
            if(result.size()==3){
             return;
+           }
+           if(curr==nullptr){
+               return;
            }
            if(curr->terminal){
                 result.push_back(word);
@@ -113,12 +117,15 @@ using namespace std;
            }
         }
 
-    };
 
-class Solution {
-public:
-    vector<vector<string>> suggestedProducts(vector<string>& products, string searchWord) {
-        Trie trie=Trie();
+    };
+}
+
+    class Program{
+        public:
+
+        vector<vector<string>> suggestedProducts(vector<string>& products, string searchWord) {
+        __self::Trie trie=__self::Trie();
         vector<vector<string>>res;
         for(string s:products){
             trie.insert(s);
@@ -126,15 +133,32 @@ public:
         string curr_word="";
         for(char c:searchWord){
             curr_word.push_back(c);
-            Node *curr=trie.CurrentPosition(curr_word);
+            __self::Node *curr=trie.CurrentPosition(curr_word);
             vector<string>ans;
-            res.push_back(trie.suggestions(curr,curr_word,ans));
+            trie.suggestions(curr,curr_word,ans);
+            res.push_back(ans);
         }
         return res;
     }
-};
+    };
 
-int main(void)
-{
-   
+
+int main(void){
+    string s;
+    vector<string>products;
+    while(cin>>s){
+        products.push_back(s);
+    }
+    string searchWord;
+    searchWord=products.back();
+    products.pop_back();
+    Program program;
+    vector<vector<string>>res=program.suggestedProducts(products,searchWord);
+    for(auto u:res){
+        for(string s:u){
+            cout<<s<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
 }
