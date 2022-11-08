@@ -1,68 +1,51 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class Node
-    {
-    public:
-        bool terminal; // means endmark
-        Node *next[26];
-        int prefix_value;
-        Node()
-        {
-            prefix_value = 0;
-            terminal = false;
-            for (int i = 0; i < 26; i++)
-            {
-                next[i] = nullptr;
-            }
-        }
-    };
-
 class WordDictionary {
+private:
+ vector<WordDictionary*>children;
+ bool isEndOfWord;
+ int prefix_value;
 public:
-    Node* root;
-    WordDictionary() {
-        root=new Node();
+    WordDictionary():isEndOfWord(false) {
+        prefix_value=0;
+        children.resize(26);
+        fill(children.begin(),children.end(),nullptr);
     }
     
     void addWord(string word) {
-        Node *curr = root;
-            root->prefix_value++;//Count of words in a dictionary
-            for (char &character : word)
-            {
-                int id = character - 'a';
-                if (curr->next[id] == nullptr)
-                {
-                    curr->next[id] = new Node();
-                }
-                curr = curr->next[id];
-                curr->prefix_value++;
+        WordDictionary *curr=this;
+        curr->prefix_value++;
+        for(char &character:word){
+            if(!curr->children[character-'a']){
+                curr->children[character-'a'] =new WordDictionary();
             }
-            curr->terminal=true;
+            curr=curr->children[character-'a'];
+            curr->prefix_value++;
+        }
+        curr->isEndOfWord=true;
     }
     
     bool search(string word) {
-        Node *curr = root;
-            for (char &character : word)
+        WordDictionary* curr=this;
+        int word_len=word.length();
+        for (int i=0;i<word_len;i++)
             {
+                char character=word[i];
                 if(character=='.'){
-                    for(int id=0;id<26;id++){
-                        if(curr->next[id]!=nullptr){
-                            character=(id+'a');
-                            return search(word);
+                    for(auto u:curr->children){
+                        if(u && u->search(word.substr(i+1))){
+                            return true;
                         }
                     }
+                    return false;
                 }
-                else{
-                    int id = character - 'a';
-                    if (curr->next[id] == nullptr)
-                    {
-                        return false;
-                    }
-                    curr = curr->next[id];
+                if(curr->children[character-'a']==nullptr){
+                    return false;
                 }
+                curr=curr->children[character-'a'];
             }
-            return curr->terminal;
+            return curr &&  curr->isEndOfWord;
     }
 };
 
@@ -73,6 +56,26 @@ public:
  * bool param_2 = obj->search(word);
  */
 
+
+
+/**
+ * Your WordDictionary object will be instantiated and called as such:
+ * WordDictionary* obj = new WordDictionary();
+ * obj->addWord(word);
+ * bool param_2 = obj->search(word);
+ */
+
 int main(void){
 
+// ["WordDictionary","addWord","addWord","search","search","search","search","search","search"]
+// [[],["a"],["a"],["."],["a"],["aa"],["a"],[".a"],["a."]]
+    WordDictionary *dictionary=new WordDictionary();
+    dictionary->addWord("a");
+    dictionary->addWord("a");
+    dictionary->search(".");
+    dictionary->search("a");
+    dictionary->search("aa");
+    dictionary->search("a");
+    dictionary->search(".a");
+    dictionary->search("a.");
 }
