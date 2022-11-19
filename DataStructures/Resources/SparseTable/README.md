@@ -6,9 +6,10 @@ The primary idea behind using sparse tables is that any number can be represente
 ![binaryRepresentation](https://github.com/mirzaazwad/Data-Structures-And-Algorithms/blob/main/DataStructures/Resources/SparseTable/binaryRepresentation.png)
 
 By the same reasoning any interval can be uniquely represented with decreasing powers of 2, for instance
-```
- [0..18] = [0..2<sup>4</sup>) U [2<sup>4</sup>..2<sup>4</sup>+2<sup>1</sup>) U [2<sup>4</sup>+2<sup>1</sup>..2<sup>4</sup>+2<sup>1</sup>+2<sup>0</sup>)
- ```
+<block>
+  [0..18] = [0..2<sup>4</sup>) U [2<sup>4</sup>..2<sup>4</sup>+2<sup>1</sup>) U [2<sup>4</sup>+2<sup>1</sup>..2<sup>4</sup>+2<sup>1</sup>+2<sup>0</sup>)
+ </block>
+ 
  
 
 
