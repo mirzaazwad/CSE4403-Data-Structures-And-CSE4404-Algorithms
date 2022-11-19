@@ -17,16 +17,8 @@ By the same reasoning any interval can be uniquely represented with decreasing p
  ```cpp
  int arr[13]={4,2,3,7,1,5,3,3,9,6,7,-1,4};
  ```
- 
- <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
-<table class="tg">
+
+ <table class="tg">
 <thead>
   <tr>
     <th class="tg-0lax"></th>
@@ -92,7 +84,6 @@ By the same reasoning any interval can be uniquely represented with decreasing p
   </tr>
 </tbody>
 </table>
- 
  
 
 
