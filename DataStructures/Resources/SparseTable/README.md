@@ -113,6 +113,13 @@ By the same reasoning any interval can be uniquely represented with decreasing p
 
  Which essentially translates to the function f that is performed on SparseTable[i-1][j] and SparseTable[i-1][j+2<sup>i</sup>].
 
- 
+ Now let's try to calculate the minimum for the array given above for the range 1 to 11.
+The range can be split as follows:
+```
+[1,11]=[1,1+(1<<3)] U [9,9+1<<1] U [11,11+1<<0];
+```
+if [j,j+2<sup>i</sup>] represents each one of these splits, the minimum can be obtained from (i,j) being (3,1), (1,9) and (0,11) cells in the sparse table, so the min is min(1,6,-1)=-1 so this allows us to find RMQ in O(1).
+
+If we form an equation out of this idea, [l,r] = [l,l+2<sup>k</sup>] U [r-2<sup>k</sup>+l,r]
 
 
