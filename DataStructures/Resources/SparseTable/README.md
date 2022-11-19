@@ -120,6 +120,8 @@ The range can be split as follows:
 ```
 if [j,j+2<sup>i</sup>] represents each one of these splits, the minimum can be obtained from (i,j) being (3,1), (1,9) and (0,11) cells in the sparse table, so the min is min(1,6,-1)=-1 so this allows us to find RMQ in O(1).
 
-If we form an equation out of this idea, [l,r] = [l,l+2<sup>k</sup>] U [r-2<sup>k</sup>+l,r]
+If we form an equation out of this idea, [l,r] = [l,l+2<sup>k</sup>] U [r-2<sup>k</sup>+l,r] where k is the maximum power of 2 and
+
+r>=l+2<sup>k</sup>
 
 
