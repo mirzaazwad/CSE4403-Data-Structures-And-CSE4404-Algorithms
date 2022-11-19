@@ -105,5 +105,14 @@ By the same reasoning any interval can be uniquely represented with decreasing p
 </tbody>
 </table>
  
+ O(nlogn) time is still required for precalculation. But for queries it takes O(1) time for overlapping queries and O(logn) time for non-overlapping queries. So each value in the cells can be calculated as follows:
+
+ ```cpp
+ SparseTable[i][j]=f(SparseTable[i-1][j],SparseTable[i-1][j+(1<<(i-1))]);
+ ```
+
+ Which essentially translates to the function f that is performed on SparseTable[i-1][j] and SparseTable[i-1][j+2<sup>i</sup>].
+
+ 
 
 
