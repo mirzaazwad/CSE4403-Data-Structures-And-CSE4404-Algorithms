@@ -72,6 +72,7 @@ By the same reasoning any interval can be uniquely represented with decreasing p
   </tr>
   <tr>
     <td>2</td>
+    <td>2</td>
     <td>1</td>
     <td>1</td>
     <td>1</td>
@@ -81,6 +82,23 @@ By the same reasoning any interval can be uniquely represented with decreasing p
     <td>3</td>
     <td>-1</td>
     <td>-1</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>-1</td>
+    <td>-1</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
