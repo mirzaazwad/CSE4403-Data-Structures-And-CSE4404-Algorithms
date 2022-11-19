@@ -55,38 +55,35 @@ By the same reasoning any interval can be uniquely represented with decreasing p
     <td>4</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>3</td>
+    <td>3</td>
+    <td>3</td>
+    <td>6</td>
+    <td>6</td>
+    <td>-1</td>
+    <td>-1</td>
+    <td> X </td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>2</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>3</td>
+    <td>3</td>
+    <td>3</td>
+    <td>-1</td>
+    <td>-1</td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
   </tr>
 </tbody>
 </table>
