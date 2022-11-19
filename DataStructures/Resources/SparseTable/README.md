@@ -35,7 +35,6 @@ By the same reasoning any interval can be uniquely represented with decreasing p
     <th>10</th>
     <th>11</th>
     <th>12</th>
-    <th>13</th>
   </tr>
 </thead>
 <tbody>
