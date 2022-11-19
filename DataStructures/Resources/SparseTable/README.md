@@ -101,7 +101,6 @@ By the same reasoning any interval can be uniquely represented with decreasing p
     <td>X</td>
     <td>X</td>
     <td>X</td>
-    <td>X</td>
   </tr>
 </tbody>
 </table>
