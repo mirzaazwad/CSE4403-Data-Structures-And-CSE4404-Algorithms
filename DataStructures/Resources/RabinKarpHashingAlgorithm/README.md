@@ -101,6 +101,7 @@ void RabinKarp(string txt, int txt_len, string pat, int pat_len, int base)
 
 //RabinKarp(txt, txt.length(), pat, pat.length(), 1 << (txt.length())); using
 ```
+One thing I learnt while making this tutorial was that unsigned int has a default mod function where numbers less than 0 or greater than the range is automatically modded.
 
 * The best case: <b>O(m+n-1)</b>
 * The worst case: <b>O(mn)</b>
