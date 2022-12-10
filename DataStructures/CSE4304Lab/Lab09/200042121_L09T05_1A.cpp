@@ -37,6 +37,7 @@ namespace Problem{
                     sentence.push_back(s);
                 }
                 target=sentence.back();
+                sentence.pop_back();
             }
 
             int get_hash(string word){
