@@ -29,6 +29,6 @@ void func(int n)
 
 The tracing tree for the recursion given above:
 
-![Tail Recursion Image]()
+![Tail Recursion Image](https://github.com/mirzaazwad/Data-Structures-And-Algorithms/blob/main/Algorithms/RecursiveFunctions/Tutorial/TailRecursion.png)
 
 The tracing tree here shows every step of recursion.
