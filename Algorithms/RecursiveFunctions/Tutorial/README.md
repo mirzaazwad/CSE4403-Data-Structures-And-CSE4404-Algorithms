@@ -162,6 +162,20 @@ Explanation might look something like this
 ![image](https://user-images.githubusercontent.com/50703605/210554644-3ea61445-34d5-4c47-b4d8-ff286f15af0a.png)
 Left side number shows the execution steps, so from the above program, we get, 5 4 3 2 1. So indeed it ran on reverse direction.
 
+### How Recursion uses stack
 
+The first idea is that each time a function is called an activation record is created for the function which occupies the stack memory. As the activation records are created they pile up or form a stack especially for recursive calls. Let's consider the input for the head recursion example.
+![IMG_20230104_184042](https://user-images.githubusercontent.com/50703605/210557393-90b835e7-6831-400f-b62e-c86a9af24743.jpg)
+The activation records are popped when the base condition is met and it starts backtracking one by one. The size of the stack is the number of activation records created during the progress of the recursion. In this case the size of the stack is considered to be 4 as we exclude the activation record for main when calculating the size of the stack for a specific recursive function. The size of the memory consumed is this m x (n+1) where m is the memory for each call and n+1 is the number of calls of the function, func(n). If the toal calls is n+1 then the memory complexity is O(n) as m is a constant. Thus recursive functions appear to be more memory consuming than iterative loops which essentially has a memory complexity of O(1). 
+
+### General Precaution for using recursion in competitive programming
+
+Be careful while using recursions. From a programming contest aspects, recursions are always best to avoid. As you've seen above, most recursions can be done using loops somehow. Recursions have a great deal of drawbacks and it most of the time extends the execution time of your program. Though recursions are very very easy to understand and they are like the first idea in many problems that pops out in mind first... they still bear the risks of exceeding memory and time limits.
+
+Generally, in loops, all the variables are loaded at the same time which causes it a very low memory consumption and faster access to the instructions. But whenever we use recursions, each function is allotted a space at the moment it is called which requires much more time and all the internal piece of codes stored again which keeps the memory consumption rising up. As your compiler allows you a specific amount of memory (generally 32 MB) to use, you may overrun the stack limit by excessive recursive calls which causes a Stack Overflow error (a Runtime Error).
+
+### Introduction to Dynamic Programming
+
+If the recursion tree has some overlapping branches, most of the times, what we do, is to store already computed values, so, when we meet any function which was called before, we may stop branching again and use previously computed values, which is a common technique knows as Dynamic Programming (DP), we will talk about that later as that is pretty advanced. A better example regarding fibonacci would be shown later.
 
 
