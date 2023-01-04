@@ -219,14 +219,13 @@ T(n)=1 when n=0
 - rewrite the constant values as 1
 - Go to next n, T(n-1)=T(n-2)+1
 - Substitute the previous step in the first step
-- 
 T(n)=T(n-2)+1+1=T(n-2)+2
 
 T(n)=T(n-3)+1+2=T(n-3)+3
 
 Hence, T(n)=T(n-k)+k
  
-So when you don't know the answer for the bigger expression but you know the answer for the smaller expression so you keep breaking the problem into smaller ones and sole it. Here you try to reach 0 so n-k=0 => n=k
+- So when you don't know the answer for the bigger expression but you know the answer for the smaller expression so you keep breaking the problem into smaller ones and sole it. Here you try to reach 0 so n-k=0 => n=k
 
 T(n)=T(n-n)+n
 
