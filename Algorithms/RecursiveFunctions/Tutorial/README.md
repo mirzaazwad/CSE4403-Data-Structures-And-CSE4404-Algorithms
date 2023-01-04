@@ -132,5 +132,36 @@ void FOR(int i, int n) {
     FOR(i+1, n); // go to next step
 }
 ```
-<font face="courier new" size="3"><br><span style="color:#101000">01|call function<sub>1</sub> with i=1<br><span style="color:#FF00FF">02|    call function<sub>2</sub> with i=2<br><span style="color:#3399FF">03|        call function<sub>3</sub> with i=3<br><span style="color:#0000FF">04|            call function<sub>4</sub> with i=4<br><span style="color:#336600">05|                call function<sub>5</sub> with i=5<br><span style="color:#FF0000">06|                    call function<sub>6</sub> with i=6<br>07|                        i breaks condition, no more calls<br>08|                    return to function<sub>5</sub></span><br>09|                    print 5<br>10|                return to function<sub>4</sub></span><br>11|                print 4<br>12|            return to function<sub>3</sub></span><br>13|            print 3<br>14|        return to function<sub>2</sub></span><br>15|        print 2<br>16|    return to function<sub>1</sub></span><br>17|    print 1<br>18|return to main, done!</span></font>
+We can do the same for a backward loop.
+For a backward loop, the key difference lies in the fact that the loop travels backwards or has a decrement for i and the i starts at n-1 and proceeds towards 0. The code is given below:
+```cpp
+for(int i = n-1; i >= 0; i -= 1) {
+    // do whatever needed
+}
+```
+
+The equivalent recursion can be
+```cpp
+void ROF(int i, int n) {
+    if(i==n) return; // terminates
+    ROF(i+1, n); // keep going to the last
+    // do whatever needed when returning from prev steps
+}
+```
+Now you may wonder that how does this make sense, but the idea is making use of the descending phase of recursion similar to how we use the descending phase of recursion in a head recursion. The statements being after the call statement means that the execution of these statements takes place at the time of backtracking or at returning time. Just think of its execution cycle, just after entering the function, it is calling itself again incrementing the value of i, and the execution routine that you have written under the function call, was paused there. From the new function it enters, it works the same way, call itself again before executing anything...Thus when you have reached the limiting condition, or the base condition, then the function stops recursion and starts returning, and the whole process can be shown as below...let n=5, and we want to print 5 4 3 2 1...code for this might be:
+
+```cpp
+void function(int i, int n) {
+    if(i<=n) {
+        function(i+1, n);
+        printf("%d ", i);
+    }
+}
+```
+Explanation might look something like this
+![image](https://user-images.githubusercontent.com/50703605/210554644-3ea61445-34d5-4c47-b4d8-ff286f15af0a.png)
+Left side number shows the execution steps, so from the above program, we get, 5 4 3 2 1. So indeed it ran on reverse direction.
+
+
+
 
