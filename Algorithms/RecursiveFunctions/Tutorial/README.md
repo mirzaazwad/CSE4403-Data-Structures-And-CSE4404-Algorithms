@@ -178,4 +178,7 @@ Generally, in loops, all the variables are loaded at the same time which causes 
 
 If the recursion tree has some overlapping branches, most of the times, what we do, is to store already computed values, so, when we meet any function which was called before, we may stop branching again and use previously computed values, which is a common technique knows as Dynamic Programming (DP), we will talk about that later as that is pretty advanced. A better example regarding fibonacci would be shown later.
 
-
+### References
+- [Abdul Bari Udemy Data Structures Recursion](https://www.udemy.com/course/datastructurescncpp/)
+- [Abdul Bari Youtube Algorithms](https://youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O)
+- [Attacking Recursions](https://zobayer.blogspot.com/2009/12/cse-102-attacking-recursion.html)
