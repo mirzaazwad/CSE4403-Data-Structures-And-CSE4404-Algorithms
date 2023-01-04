@@ -178,6 +178,63 @@ Generally, in loops, all the variables are loaded at the same time which causes 
 
 If the recursion tree has some overlapping branches, most of the times, what we do, is to store already computed values, so, when we meet any function which was called before, we may stop branching again and use previously computed values, which is a common technique knows as Dynamic Programming (DP), we will talk about that later as that is pretty advanced. A better example regarding fibonacci would be shown later.
 
+### Time Complexity in Recursion
+
+For the basic idea of time complexity we assume every statement takes 1 unit of time for execution. So if we observe the following recursive statement.
+```cpp
+void func(int n)
+{
+  if(n>0)
+  {
+    func(n-1);
+    printf("%d",n);
+  }
+}
+```
+which gives this tracing tree for input 3:
+![Head Recursion Image](https://github.com/mirzaazwad/Data-Structures-And-Algorithms/blob/main/Algorithms/ImplementationsAndPracticeProblems/RecursiveFunctions/Tutorial/HeadRecursion.png)
+
+essentially every level of the tree takes 1 unit of time for execution so the overall Time complexity, T<sub>3</sub>=3 for n=3 and for n, T<sub>n</sub>=m
+which means that the complexity can be seen as O(n).
+
+The typical way to determine time complexity is not necessarily on a level basis. We come across other means such as **Master's Theorem** and determining mathematically using recurrence relation. Let's first discuss **determining time complexity with recurrence relation**.
+
+Observe the following function:
+
+```cpp
+void func(int n)
+{
+  if(n>0)
+  {
+    printf("%d",n);
+    func(n-1);
+  }
+}
+```
+T(n)=T(n-1)+2 when n>0
+T(n)=1 when n=0
+ can be the recurrence relation
+ 
+ The steps to determine the time complexity can be as follows:
+- rewrite the constant values as 1
+- Go to next n, T(n-1)=T(n-2)+1
+- Substitute the previous step in the first step
+- 
+T(n)=T(n-2)+1+1=T(n-2)+2
+
+T(n)=T(n-3)+1+2=T(n-3)+3
+
+Hence, T(n)=T(n-k)+k
+ 
+So when you don't know the answer for the bigger expression but you know the answer for the smaller expression so you keep breaking the problem into smaller ones and sole it. Here you try to reach 0 so n-k=0 => n=k
+
+T(n)=T(n-n)+n
+
+T(n)=T(0)+n
+
+T(n)=1+n
+
+which can be written as O(n).
 ### References
 - [Abdul Bari Udemy Data Structures Recursion](https://www.udemy.com/course/datastructurescncpp/)
 - [Abdul Bari Youtube Algorithms](https://youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O)
