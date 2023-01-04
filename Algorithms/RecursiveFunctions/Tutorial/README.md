@@ -116,6 +116,21 @@ First distinction we need to consider is that a loop only has an ascending phase
 
 The key distinguishing factor between recursion and loops is that loops only have ascending phase while recursions have ascending and descending phases although both can be used as repeating/iterative structures.
 
-But whatever you can do with loop, you can do with recursion.
+But whatever you can do with loop, you can do with recursion. In this section I shall give a brief overview of the simple technique to convert the loop statements into recursion. See the following example for **forward loop**.
 
+```cpp
+for(int i = 0; i < n; i++) {
+    // do whatever needed
+}
+```
+
+To convert this to recursion the basic approach is:
+```cpp
+void FOR(int i, int n) {
+    if(i==n) return; // terminates
+    // do whatever needed
+    FOR(i+1, n); // go to next step
+}
+```
+<font face="courier new" size="3"><br><span style="color:#101000">01|call function<sub>1</sub> with i=1<br><span style="color:#FF00FF">02|    call function<sub>2</sub> with i=2<br><span style="color:#3399FF">03|        call function<sub>3</sub> with i=3<br><span style="color:#0000FF">04|            call function<sub>4</sub> with i=4<br><span style="color:#336600">05|                call function<sub>5</sub> with i=5<br><span style="color:#FF0000">06|                    call function<sub>6</sub> with i=6<br>07|                        i breaks condition, no more calls<br>08|                    return to function<sub>5</sub></span><br>09|                    print 5<br>10|                return to function<sub>4</sub></span><br>11|                print 4<br>12|            return to function<sub>3</sub></span><br>13|            print 3<br>14|        return to function<sub>2</sub></span><br>15|        print 2<br>16|    return to function<sub>1</sub></span><br>17|    print 1<br>18|return to main, done!</span></font>
 
