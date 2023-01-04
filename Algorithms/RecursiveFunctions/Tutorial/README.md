@@ -56,3 +56,15 @@ Observe the different with tail recursion, the difference lies in the fact that 
 ![Head Recursion Image](https://github.com/mirzaazwad/Data-Structures-And-Algorithms/blob/main/Algorithms/RecursiveFunctions/Tutorial/HeadRecursion.png)
 
 Now let's look at the tree from a different angle, essentially the tree works such that every time the recursive function is called it goes deeper into the leftmost branch of the tree, after the calls for that branch finally meets the base condition, it backtracks and moves onto the next branch. Observe in the aforementioned head recursion tracing tree. The first call takes func(3) and then it moves onto func(2) -> func(1) -> func(0) when it meets func(0) it meets the base condition being that n is no longer grreater than 0, so it returns call to func(1) which continues to check if it has any other children besides func(0), the only other child is a print function being printf("%d",1) so it prints the number and then func(1)'s task is complete, it then goes to its parent func(2), func(2) checks its remaining children, upon all children's task being completed, func(2) goes to its parent func(3) , so on and so forth.
+
+# Understanding the different types with analogies
+
+First imagine 3 connected rooms, essentially to go to the third room you have to enter the first room and then through the first room, you enter the second room, and then through the second room, you enter the third room. 
+
+We are going to perform two tasks:
+- Switch on the Bulb
+- Move between rooms.
+Our goal is to turn on all 3 lights.
+
+Now if we first turn on a light and then go to the next room, its basically tail recursion.
+If we first go to the third room and on our way back we turn on the lights one by one then it is head recursion.
