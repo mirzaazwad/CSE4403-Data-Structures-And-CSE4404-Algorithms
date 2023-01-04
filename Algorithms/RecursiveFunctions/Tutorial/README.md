@@ -87,10 +87,12 @@ void func(int n)
   }
 }
 ```
-### Some general approaches to solve recursive problems
+### Introduction to Divide and Conquer
 
 For recursive problems first focus on the input and the output. This is the first step or you may call it the basis step upon which we build up the solution to come.
 Suppose we know that this function takes an input and spits out an output. But to find this output we need a series of subproblems being solved. The subproblems may be solved by calling the same function again with a different input. So the function basically says, I cannot solve the problem now but if you give me this result I can solve it, so you are basically like, okay then can you find the result you need if you call yourself using a different input, if yes, perform the calling until you can come up with a solution. So this becomes the essence of what we call **Divide and Conquer** in the computer science realm.
+
+### Understanding the Factorial Function
 
 Let's observe the simplest of all recursive statements, **FACTORIAL**
 
@@ -110,5 +112,10 @@ So say that you wanted factorial(3), the pathway would go as follows factorial(3
 First distinction we need to consider is that a loop only has an ascending phase and not a descending phase unlike recursion although loops and recursions are both iterative or repetitive statements. Its ok to not understand right now, let's see some details to clarify the concepts.
 
 
+### Recursion vs Loop
+
+The key distinguishing factor between recursion and loops is that loops only have ascending phase while recursions have ascending and descending phases although both can be used as repeating/iterative structures.
+
+But whatever you can do with loop, you can do with recursion.
 
 
