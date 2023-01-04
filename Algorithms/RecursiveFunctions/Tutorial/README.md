@@ -4,11 +4,14 @@
 
 A **Recursive Function** is one that calls itself and it should have a base condition that helps terminate the recursive calls. 
 
-A Recursive function can generally be of two types:
+A Recursive function can generally be of the following types:
 - tail recursion
 - head recursion
+- tree recursion
+- indirect recursion
+- nested recursion
 
-We will discuss the types of recursion later
+We will discuss the other types of recursion later, first let's start with tail and head recursion.
 
 First let's discuss the tracing of a recursion tree. The tracing of a recursion tree allows one to view the different pathways the recursion tree takes. 
 To give some intuition we will soon see the two different types of recursions mentioned being traced. 
@@ -84,7 +87,28 @@ void func(int n)
   }
 }
 ```
-### Recursion vs Loop
+### Some general approaches to solve recursive problems
+
+For recursive problems first focus on the input and the output. This is the first step or you may call it the basis step upon which we build up the solution to come.
+Suppose we know that this function takes an input and spits out an output. But to find this output we need a series of subproblems being solved. The subproblems may be solved by calling the same function again with a different input. So the function basically says, I cannot solve the problem now but if you give me this result I can solve it, so you are basically like, okay then can you find the result you need if you call yourself using a different input, if yes, perform the calling until you can come up with a solution. So this becomes the essence of what we call **Divide and Conquer** in the computer science realm.
+
+Let's observe the simplest of all recursive statements, **FACTORIAL**
+
+```cpp
+int factorial(int n)
+{
+  //the first if statement gives the base condition which is the basis step, I know this so I don't need the function to go any further
+  if(n<=1)return 1;
+  else return n*factorial(n-1);
+  //the else statement provides the path the function has to go by so that it reaches the base condition, if any other input is given to factorial, don't bother
+  //just keep reusing the factorial function.
+}
+```
+
+So say that you wanted factorial(3), the pathway would go as follows factorial(3)->3\*factorial(2)->2\*factorial(1)->1 what happens then is that it backtracks, factorial(1) is like okay fine, I have the solution factorial(2) asked for and so factorial(2) is replaced with 2\*1 and then factorial(2) is like okay I have the solution that factorial(3) asked for and so factorial 3 is replaced by 3\*(2\*1) thus giving us the answer 3\*2\*1=6
+
+First distinction we need to consider is that a loop only has an ascending phase and not a descending phase unlike recursion although loops and recursions are both iterative or repetitive statements. Its ok to not understand right now, let's see some details to clarify the concepts.
+
 
 
 
