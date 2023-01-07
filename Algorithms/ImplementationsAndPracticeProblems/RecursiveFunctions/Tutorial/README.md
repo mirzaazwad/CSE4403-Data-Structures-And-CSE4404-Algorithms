@@ -233,6 +233,9 @@ T(n)=T(0)+n
 
 T(n)=1+n
 
+Let's discuss a few more examples before we come across the Master's theorem for recursion.
+
+
 which can be written as O(n).
 ### References
 - [Abdul Bari Udemy Data Structures Recursion](https://www.udemy.com/course/datastructurescncpp/)
