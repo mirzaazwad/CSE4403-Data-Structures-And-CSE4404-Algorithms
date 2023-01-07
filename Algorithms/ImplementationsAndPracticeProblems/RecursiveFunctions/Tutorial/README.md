@@ -233,10 +233,22 @@ T(n)=T(0)+n
 
 T(n)=1+n
 
-Let's discuss a few more examples before we come across the Master's theorem for recursion.
-
-
 which can be written as O(n).
+
+
+# Divide and Conquer
+
+**Divide and conquer** is a strategy just like dynamic programming or grreedy. This strategy helps one to solve the problem by breaking the program into multiple sub program or modules. Each module gives a particular result. And the final result that we initially wanted can be obtained by somehow joining all these results into a single unit somehow. Let's examplify it to make it easier. 
+
+- We have a large problem, P of size n
+- We can then break the large problem into smaller sub problems, let's say k different sub problems
+- Once we have the solution for k different sub problems we can combine these solutions to get a final result for the large problem, P.
+
+
+
+
+
+
 ### References
 - [Abdul Bari Udemy Data Structures Recursion](https://www.udemy.com/course/datastructurescncpp/)
 - [Abdul Bari Youtube Algorithms](https://youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O)
