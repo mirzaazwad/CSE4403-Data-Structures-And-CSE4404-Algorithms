@@ -8,3 +8,7 @@ This is the repository where I outline the different implementations of various 
 [CourseBooks](https://drive.google.com/drive/folders/1ahs2VmJuWh_QLEnebAQXEdYgFVo4tQ9c?usp=sharing)
 
 [CLRS(Introductions To Algorithms by Cormen) Solutions](https://sites.math.rutgers.edu/~ajl213/CLRS/CLRS.html)
+
+## My Training Sheet
+
+[Training Sheet](https://docs.google.com/spreadsheets/d/16k05a0XT2iqQCTFUvr3k2uesyi-v28zcSDszyz3XfZc/edit?usp=sharing)
