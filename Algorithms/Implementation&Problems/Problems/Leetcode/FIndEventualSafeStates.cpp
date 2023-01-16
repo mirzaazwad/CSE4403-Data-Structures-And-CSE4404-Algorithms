@@ -18,8 +18,8 @@ public:
     vector<int>adj[graph.size()];
     for(int i=0;i<graph.size();i++){
       for(auto u:graph[i]){
-        adj[u].push_back(i);
-        indegree[i]++;
+        adj[i].push_back(u);
+        indegree[u]++;
       }
     }
     queue<int>q;
