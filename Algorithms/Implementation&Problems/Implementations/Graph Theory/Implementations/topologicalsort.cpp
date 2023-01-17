@@ -39,7 +39,7 @@ void topologicalSort()
   cout << endl;
 }
 
-void topological_sort()//Sir's Algorithm
+void topological_sort()//Sir's Algorithm -> Known as Kahn's Algorithm
 {
   vector<int>v[6];
   vector<int> indegree(N, 0);
