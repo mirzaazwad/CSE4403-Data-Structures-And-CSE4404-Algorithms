@@ -1,4 +1,7 @@
-/*
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
 // Definition for a Node.
 class Node {
 public:
@@ -16,46 +19,38 @@ public:
         children = _children;
     }
 };
-*/
+
 
 class Solution
 {
 public:
   vector<vector<int>> levelOrder(Node *root)
   {
-    queue<Node *> q;
-    q.push(root);
-    map<int, int> level;
     if (root == nullptr)
     {
       return {};
     }
-    level[root->val] = 0;
-    map<int, vector<int>> level_member;
-    level_member[level[root->val]].push_back(root->val);
+    queue<Node *> q;
+    q.push(root);
+    vector<vector<int>>ans;
     while (!q.empty())
     {
-      Node *temp = q.front();
-      q.pop();
-      for (auto u : temp->children)
-      {
-        if (u == nullptr)
-          continue;
-        level[u->val] = level[temp->val] + 1;
-        level_member[level[u->val]].push_back(u->val);
-        q.push(u);
+      vector<int>res;
+      int n=q.size();
+      for(int i=0;i<n;i++){
+        Node* temp=q.front();
+        q.pop();
+        res.push_back(temp->val);
+        for(auto u:temp->children){
+          q.push(u);
+        }
       }
-    }
-    vector<vector<int>> ans;
-    for (auto u : level_member)
-    {
-      vector<int> tmp;
-      for (auto v : u.second)
-      {
-        tmp.push_back(v);
-      }
-      ans.push_back(tmp);
+      ans.push_back(res);
     }
     return ans;
   }
 };
+
+int main(){
+
+}
