@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    "*.embeddedhtml": "html",
     "deque": "cpp",
     "string": "cpp",
     "vector": "cpp",
@@ -12,6 +13,7 @@
     "utility": "cpp",
     "valarray": "cpp",
     "forward_list": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "*.tcc": "cpp"
   }
 }
