@@ -5,43 +5,37 @@ using namespace std;
 
 class Solution
 {
+private:
+  long long low;
+  long long high;
 public:
-  set<pair<int, int>> s;
-  int cnt = 0;
-  int binSearch(int l, int r, long long key, vector<int> &nums)
-  {
-    int lo = l;
-    int hi = r;
-    while (lo <= hi)
-    {
-      int mid = (lo + hi) / 2;
-
-      if ((long long)nums[mid] >= key)
-        hi = mid - 1;
-      else if ((long long)nums[mid] < key)
-        lo = mid + 1;
+  int merge_sum(vector<long long>& prefix, int l, int r){
+    if(l == r){
+        return prefix[l] >= low && prefix[r] <= high;
     }
-    return lo;
-  }
-
-  void call(int l, int r, vector<int> &nums)
-  {
-    int mid = (l + r) / 2;
-    if (l < r)
-    {
-
-      call(l, mid, nums);
-      call(mid + 1, r, nums);
+    int cnt = 0;
+    int mid = (l+r)>>1;
+    int lSum = merge_sum(prefix, l, mid);
+    int rSum = merge_sum(prefix, mid+1, r);
+    int i = l;
+    while(i <= mid){
+        cnt+=(upper_bound(prefix.begin()+mid+1,prefix.begin()+r+1,prefix[i]+high)-lower_bound(prefix.begin()+mid+1,prefix.begin()+r+1,prefix[i]+low));
+        i++;
     }
-    int ix = binSearch(mid+1, r, (long long)nums[l]/2, nums);
-    if((long long)nums[ix]>2*(long long)nums[l]){
-      s.emplace(ix,l);
-    }
-  }
-  int reversePairs(vector<int> &nums)
-  {
-    call(0, nums.size() - 1, nums);
-    return s.size();
+    sort(prefix.begin()+l,prefix.begin()+r+1);
+    return lSum+rSum+cnt;
+}
+
+  int countRangeSum(vector<int>& nums, int lower, int upper) {
+        low=lower;
+        high=upper;
+        int n=nums.size();
+        vector<long long>prefix(n);
+        prefix[0]=nums[0];
+        for(int i=1;i<n;i++){
+          prefix[i]=prefix[i-1]+nums[i];
+        }
+        return merge_sum(prefix,0,n-1);
   }
 };
 
@@ -49,12 +43,13 @@ int main(void)
 {
   int n;
   cin >> n;
+  int low,upper;
+  cin>>low>>upper;
   vector<int> arr(n);
   for (int &i : arr)
   {
     cin >> i;
   }
   Solution *solve = new Solution();
-  cout << solve->reversePairs(arr) << endl;
-  ;
+  cout<<solve->countRangeSum(arr,low,upper);
 }
